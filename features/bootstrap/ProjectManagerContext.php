@@ -15,11 +15,21 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
     use ProjectManagerDictionary;
 
     /**
+     * @var Sprint
+     */
+    private $sprint;
+
+    /**
+     * @var Task
+     */
+    private $task;
+
+    /**
      * @Given a sprint named :name with a duration of :duration hours
      */
     public function aSprintNamedWithADurationOfHours($name, Duration $duration)
     {
-        $aSprint = Sprint::namedWithDuration($name, $duration);
+        $this->sprint = Sprint::namedWithDuration($name, $duration);
     }
 
     /**
@@ -29,14 +39,16 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
     {
         $aTask = Task::named($name);
         $aTask->estimate($duration);
+
+        $this->task = $aTask;
     }
 
     /**
-     * @When I choose to assign the task :arg1 to the given sprint
+     * @When I choose to assign the task :name to the given sprint
      */
-    public function iChooseToAssignTheTaskToTheGivenSprint($arg1)
+    public function iChooseToAssignTheTaskToTheGivenSprint($name)
     {
-        throw new PendingException();
+        $this->sprint->assignTask($this->task);
     }
 
     /**
