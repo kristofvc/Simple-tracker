@@ -3,6 +3,8 @@
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
+use SimpleTracker\Duration\Duration;
+use SimpleTracker\Project\Sprint;
 
 /**
  * Defines application features from the specific context.

@@ -1,5 +1,7 @@
 <?php
 
+use SimpleTracker\Duration\Duration;
+
 trait ProjectManagerDictionary
 {
     /**
