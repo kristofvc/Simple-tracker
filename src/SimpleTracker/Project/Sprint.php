@@ -13,4 +13,9 @@ class Sprint
 
         return $sprint;
     }
+
+    public function assignTask($argument1)
+    {
+        // TODO: write logic here
+    }
 }
