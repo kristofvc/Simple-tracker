@@ -25,3 +25,18 @@ Add this to composer.json:
 ```
 Run `composer install`
 
+## Configure a simple project manager context through behat
+
+- Add `behat.yml`
+ 
+```json
+    default:
+        suites:
+            projectManager:
+                contexts: [ SimpleProjectManagerContext ]
+                filters:  { role: project manager, tags: simple }
+```
+
+- Run `bin/behat --init` 
+- Add the `simple` tag to the pm edits a project feature
+
