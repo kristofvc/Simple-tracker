@@ -60,3 +60,8 @@ Run `composer install`
 - Run behat with `bin/behat features/pm_edits_project.feature:7` and see the first step pass
 - Start by implementing the next pending definition and combine behat and phpspec to build your domain by repeating the steps
 
+## Leverage phpunit to test the `then` in your scenario
+
+- Use the assertion framework `use PHPUnit_Framework_Assert as Assert;`
+- Define the step by adding assertions
+- Make the step pass by again leveraging behat and phpspec

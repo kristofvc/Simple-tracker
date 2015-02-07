@@ -6,6 +6,7 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use SimpleTracker\Project\Project;
+use PHPUnit_Framework_Assert as Assert;
 
 /**
  * Defines application features from the specific context.
@@ -45,10 +46,10 @@ class SimpleProjectManagerContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Then the name of that project should be :arg1
+     * @Then the name of that project should be :name
      */
-    public function theNameOfThatProjectShouldBe($arg1)
+    public function theNameOfThatProjectShouldBe($name)
     {
-        throw new PendingException();
+        Assert::assertEquals($name, $this->project->getName());
     }
 }
