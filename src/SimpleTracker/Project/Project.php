@@ -4,18 +4,23 @@ namespace SimpleTracker\Project;
 
 class Project
 {
+    private $name;
 
-    public static function named($argument1)
+    public static function named($name)
     {
         $project = new Project();
-
-        // TODO: write logic here
+        $project->name = $name;
 
         return $project;
     }
 
-    public function setName($argument1)
+    public function setName($name)
     {
-        // TODO: write logic here
+        $this->name = $name;
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 }
