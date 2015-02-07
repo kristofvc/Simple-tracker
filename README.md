@@ -45,3 +45,17 @@ Run `composer install`
 - Append snippets `bin/behat features/pm_edits_project.feature:7 --append-snippets`
 - Run behat `bin/behat features/pm_edits_project.feature:7` and implement the first pending definition
 - Run behat again and see the scenario fail
+
+## Leverage phpspec to build your domain
+
+- Run phpspec `bin/phpspec run` and see you have no specs or examples yet
+- Describe the project class under the right namespace `bin/phpspec describe SimpleTracker/Project/Project` 
+- Run phpspec and choose yes when it asks to add the project class
+- Add a `let` method to your spec to construct a project through a given constructor and arguments
+- Run phpspec and choose yes when it asks to add the constructor to your project class
+
+## Use the initialized domain concepts in your behat context
+
+- Use the project class in your behat context
+- Run behat with `bin/behat features/pm_edits_project.feature:7` and see the first step pass
+
