@@ -11,4 +11,12 @@ trait ProjectManagerDictionary
     {
         return Duration::hours((int)$string);
     }
+
+    /**
+     * @Transform :count
+     */
+    public function transformStringToCount($string)
+    {
+        return (int)$string;
+    }
 }

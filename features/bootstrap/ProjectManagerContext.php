@@ -6,6 +6,7 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use SimpleTracker\Duration\Duration;
 use SimpleTracker\Project\Sprint;
 use SimpleTracker\Task\Task;
+use PHPUnit_Framework_Assert as Assert;
 
 /**
  * Defines application features from the specific context.
@@ -52,11 +53,11 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Then the given sprint should be filled with :arg1 task
+     * @Then the given sprint should be filled with :count task
      */
-    public function theGivenSprintShouldBeFilledWithTask($arg1)
+    public function theGivenSprintShouldBeFilledWithTask($count)
     {
-        throw new PendingException();
+        Assert::assertCount($count, $this->sprint);
     }
 
     /**
