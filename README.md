@@ -58,4 +58,5 @@ Run `composer install`
 
 - Use the project class in your behat context
 - Run behat with `bin/behat features/pm_edits_project.feature:7` and see the first step pass
+- Start by implementing the next pending definition and combine behat and phpspec to build your domain by repeating the steps
 

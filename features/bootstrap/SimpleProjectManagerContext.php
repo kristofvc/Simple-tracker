@@ -13,6 +13,11 @@ use SimpleTracker\Project\Project;
 class SimpleProjectManagerContext implements Context, SnippetAcceptingContext
 {
     /**
+     * @var Project
+     */
+    private $project;
+
+    /**
      * Initializes context.
      *
      * Every scenario gets its own context instance.
@@ -28,15 +33,15 @@ class SimpleProjectManagerContext implements Context, SnippetAcceptingContext
      */
     public function thereIsAProjectNamed($name)
     {
-        $aProject = Project::named($name);
+        $this->project = Project::named($name);
     }
 
     /**
-     * @When I change the name of that project to :arg1
+     * @When I change the name of that project to :name
      */
-    public function iChangeTheNameOfThatProjectTo($arg1)
+    public function iChangeTheNameOfThatProjectTo($name)
     {
-        throw new PendingException();
+        $this->project->setName($name);
     }
 
     /**
