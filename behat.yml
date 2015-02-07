@@ -1,5 +1,9 @@
 default:
     suites:
-        projectManager:
+        simpleProjectManager:
             contexts: [ SimpleProjectManagerContext ]
             filters:  { role: project manager, tags: simple }
+
+        projectManager:
+            contexts: [ ProjectManagerContext ]
+            filters:  { role: project manager }
