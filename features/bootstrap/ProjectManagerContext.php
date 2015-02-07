@@ -5,6 +5,7 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use SimpleTracker\Duration\Duration;
 use SimpleTracker\Project\Sprint;
+use SimpleTracker\Task\Task;
 
 /**
  * Defines application features from the specific context.
