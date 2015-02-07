@@ -23,11 +23,11 @@ class SimpleProjectManagerContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Given there is a project named :arg1
+     * @Given there is a project named :name
      */
-    public function thereIsAProjectNamed($arg1)
+    public function thereIsAProjectNamed($name)
     {
-        throw new PendingException();
+        $aProject = Project::named($name);
     }
 
     /**

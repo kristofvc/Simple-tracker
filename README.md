@@ -43,3 +43,5 @@ Run `composer install`
 ## Leverage behat to start your code
 
 - Append snippets `bin/behat features/pm_edits_project.feature:7 --append-snippets`
+- Run behat `bin/behat features/pm_edits_project.feature:7` and implement the first pending definition
+- Run behat again and see the scenario fail
