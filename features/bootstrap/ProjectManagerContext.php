@@ -22,11 +22,12 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Given a task :arg1 with an estimate of :arg2 hours
+     * @Given a task :name with an estimate of :duration hours
      */
-    public function aTaskWithAnEstimateOfHours($arg1, $arg2)
+    public function aTaskWithAnEstimateOfHours($name, Duration $duration)
     {
-        throw new PendingException();
+        $aTask = Task::named($name);
+        $aTask->estimate($duration);
     }
 
     /**
