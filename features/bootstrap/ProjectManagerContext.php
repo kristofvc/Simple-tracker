@@ -3,31 +3,20 @@
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
 
 /**
  * Defines application features from the specific context.
  */
 class ProjectManagerContext implements Context, SnippetAcceptingContext
 {
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
-     */
-    public function __construct()
-    {
-    }
+    use ProjectManagerDictionary;
 
     /**
-     * @Given a sprint named :arg1 with a duration of :arg2 hours
+     * @Given a sprint named :name with a duration of :duration hours
      */
-    public function aSprintNamedWithADurationOfHours($arg1, $arg2)
+    public function aSprintNamedWithADurationOfHours($name, Duration $duration)
     {
-        throw new PendingException();
+        $aSprint = Sprint::namedWithDuration($name, $duration);
     }
 
     /**
