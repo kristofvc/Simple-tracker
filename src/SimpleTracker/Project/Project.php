@@ -13,4 +13,9 @@ class Project
 
         return $project;
     }
+
+    public function setName($argument1)
+    {
+        // TODO: write logic here
+    }
 }
