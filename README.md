@@ -40,3 +40,6 @@ Run `composer install`
 - Run `bin/behat --init` 
 - Add the `simple` tag to the pm edits a project feature
 
+## Leverage behat to start your code
+
+- Append snippets `bin/behat features/pm_edits_project.feature:7 --append-snippets`

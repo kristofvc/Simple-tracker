@@ -1,5 +1,6 @@
 <?php
 
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
@@ -19,5 +20,29 @@ class SimpleProjectManagerContext implements Context, SnippetAcceptingContext
      */
     public function __construct()
     {
+    }
+
+    /**
+     * @Given there is a project named :arg1
+     */
+    public function thereIsAProjectNamed($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When I change the name of that project to :arg1
+     */
+    public function iChangeTheNameOfThatProjectTo($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then the name of that project should be :arg1
+     */
+    public function theNameOfThatProjectShouldBe($arg1)
+    {
+        throw new PendingException();
     }
 }
