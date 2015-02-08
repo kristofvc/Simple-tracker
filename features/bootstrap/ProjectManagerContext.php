@@ -1,6 +1,5 @@
 <?php
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use SimpleTracker\Duration\Duration;
@@ -61,10 +60,10 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Then the given sprint estimate should be :arg1 hours
+     * @Then the given sprint estimate should be :duration hours
      */
-    public function theGivenSprintEstimateShouldBeHours($arg1)
+    public function theGivenSprintEstimateShouldBeHours($duration)
     {
-        throw new PendingException();
+        Assert::assertEquals($duration, $this->sprint->getEstimate());
     }
 }
