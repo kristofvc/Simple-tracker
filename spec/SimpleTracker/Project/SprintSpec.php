@@ -4,6 +4,7 @@ namespace spec\SimpleTracker\Project;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use SimpleTracker\Duration\Duration;
 use SimpleTracker\Project\Sprint;
 use SimpleTracker\Task\Task;
 
@@ -41,7 +42,11 @@ class SprintSpec extends ObjectBehavior
 
         $this->assignTask(Task::named('Awesome task 2'));
         $this->count()->shouldBe(2);
+    }
 
-
+    function it_can_get_the_estimate()
+    {
+        $this->getEstimate()->shouldHaveType('SimpleTracker\Duration\Duration');
+        $this->getEstimate()->shouldBeLike(Duration::hours(0));
     }
 }

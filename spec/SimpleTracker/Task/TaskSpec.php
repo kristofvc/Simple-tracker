@@ -26,4 +26,10 @@ class TaskSpec extends ObjectBehavior
     {
         $this->estimate(Duration::hours(2));
     }
+
+    function it_can_return_the_estimate()
+    {
+        $this->estimate(Duration::hours(2));
+        $this->getEstimate()->shouldBeLike(Duration::hours(2));
+    }
 }

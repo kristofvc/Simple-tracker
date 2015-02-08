@@ -2,6 +2,7 @@
 
 namespace SimpleTracker\Project;
 
+use SimpleTracker\Duration\Duration;
 use SimpleTracker\Task\Task;
 
 class Sprint implements \Countable
@@ -34,5 +35,16 @@ class Sprint implements \Countable
     public function count()
     {
         return count($this->tasks);
+    }
+
+    public function getEstimate()
+    {
+        $estimate = Duration::hours(0);
+        /** @var Task $task */
+        foreach ($this->tasks as $task) {
+            $estimate = $estimate->add($task->getEstimate());
+        }
+
+        return $estimate;
     }
 }

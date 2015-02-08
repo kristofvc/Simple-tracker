@@ -2,8 +2,11 @@
 
 namespace SimpleTracker\Task;
 
+use SimpleTracker\Duration\Duration;
+
 class Task
 {
+    private $estimate;
 
     public static function named($argument1)
     {
@@ -14,8 +17,13 @@ class Task
         return $task;
     }
 
-    public function estimate($argument1)
+    public function estimate(Duration $duration)
     {
-        // TODO: write logic here
+        $this->estimate = $duration;
+    }
+
+    public function getEstimate()
+    {
+        return $this->estimate;
     }
 }
