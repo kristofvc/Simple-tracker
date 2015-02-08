@@ -21,9 +21,9 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
     private $sprint;
 
     /**
-     * @var Task
+     * @var Task[]
      */
-    private $task;
+    private $tasks = [];
 
     /**
      * @Given a sprint named :name with a duration of :duration hour(s)
@@ -41,7 +41,7 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
         $aTask = Task::named($name);
         $aTask->estimate($duration);
 
-        $this->task = $aTask;
+        $this->tasks[$name] = $aTask;
     }
 
     /**
@@ -49,7 +49,7 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
      */
     public function iChooseToAssignTheTaskToTheGivenSprint($name)
     {
-        $this->sprint->assignTask($this->task);
+        $this->sprint->assignTask($this->tasks[$name]);
     }
 
     /**
