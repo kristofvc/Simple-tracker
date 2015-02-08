@@ -1,5 +1,6 @@
 <?php
 
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use SimpleTracker\Duration\Duration;
@@ -25,7 +26,7 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
     private $task;
 
     /**
-     * @Given a sprint named :name with a duration of :duration hours
+     * @Given a sprint named :name with a duration of :duration hour(s)
      */
     public function aSprintNamedWithADurationOfHours($name, Duration $duration)
     {
@@ -33,7 +34,7 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Given a task :name with an estimate of :duration hours
+     * @Given a task :name with an estimate of :duration hour(s)
      */
     public function aTaskWithAnEstimateOfHours($name, Duration $duration)
     {
@@ -52,7 +53,7 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Then the given sprint should be filled with :count task
+     * @Then the given sprint should be filled with :count task(s)
      */
     public function theGivenSprintShouldBeFilledWithTask($count)
     {
@@ -60,10 +61,18 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Then the given sprint estimate should be :duration hours
+     * @Then the given sprint estimate should be :duration hour(s)
      */
     public function theGivenSprintEstimateShouldBeHours($duration)
     {
         Assert::assertEquals($duration, $this->sprint->getEstimate());
+    }
+
+    /**
+     * @Then I should be notified that the task estimate is too long for the given sprint
+     */
+    public function iShouldBeNotifiedThatTheTaskEstimateIsTooLongForTheGivenSprint()
+    {
+        throw new PendingException();
     }
 }
