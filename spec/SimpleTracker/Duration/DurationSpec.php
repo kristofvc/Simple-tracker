@@ -27,4 +27,9 @@ class DurationSpec extends ObjectBehavior
         $newDuration->shouldHaveType('SimpleTracker\Duration\Duration');
         $newDuration->shouldBeLike(Duration::hours(4));
     }
+
+    function it_can_convert_to_hours()
+    {
+        $this->toHours()->shouldReturn(2);
+    }
 }

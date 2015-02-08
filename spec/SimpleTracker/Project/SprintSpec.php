@@ -20,7 +20,7 @@ class SprintSpec extends ObjectBehavior
 
     function let()
     {
-        $this->beConstructedThrough('namedWithDuration', ['Awesome sprint', 2]);
+        $this->beConstructedThrough('namedWithDuration', ['Awesome sprint', Duration::hours(2)]);
     }
 
     function it_is_countable()
@@ -30,17 +30,23 @@ class SprintSpec extends ObjectBehavior
 
     function it_lets_someone_assign_a_task()
     {
-        $this->assignTask(Task::named('Awesome task'));
+        $task = Task::named('Awesome task');
+        $task->estimate(Duration::hours(2));
+        $this->assignTask($task);
     }
 
     function it_lets_count_tasks()
     {
         $this->count()->shouldBe(0);
 
-        $this->assignTask(Task::named('Awesome task 1'));
+        $task = Task::named('Awesome task 1');
+        $task->estimate(Duration::hours(1));
+        $this->assignTask($task);
         $this->count()->shouldBe(1);
 
-        $this->assignTask(Task::named('Awesome task 2'));
+        $task2 = Task::named('Awesome task 2');
+        $task2->estimate(Duration::hours(1));
+        $this->assignTask($task2);
         $this->count()->shouldBe(2);
     }
 

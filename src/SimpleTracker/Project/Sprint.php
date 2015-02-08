@@ -9,18 +9,24 @@ class Sprint implements \Countable
 {
     private $tasks = [];
 
-    public static function namedWithDuration($argument1, $argument2)
+    /**
+     * @var Duration
+     */
+    private $duration;
+
+    public static function namedWithDuration($name, Duration $duration)
     {
         $sprint = new Sprint();
-
-        // TODO: write logic here
+        $sprint->duration = $duration;
 
         return $sprint;
     }
 
     public function assignTask(Task $task)
     {
-        $this->tasks[] = $task;
+        if ($this->getEstimate()->toHours() + $task->getEstimate()->toHours() <= $this->duration->toHours()) {
+            $this->tasks[] = $task;
+        }
     }
 
     /**

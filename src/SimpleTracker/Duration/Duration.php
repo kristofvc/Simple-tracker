@@ -18,4 +18,9 @@ class Duration
     {
         return Duration::hours($this->hours + $duration->hours);
     }
+
+    public function toHours()
+    {
+        return $this->hours;
+    }
 }
