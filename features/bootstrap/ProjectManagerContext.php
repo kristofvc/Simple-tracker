@@ -1,11 +1,11 @@
 <?php
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use SimpleTracker\Duration\Duration;
 use SimpleTracker\Project\Sprint;
 use SimpleTracker\Task\Task;
+use SimpleTracker\Task\TaskEstimateTooLong;
 use PHPUnit_Framework_Assert as Assert;
 
 /**

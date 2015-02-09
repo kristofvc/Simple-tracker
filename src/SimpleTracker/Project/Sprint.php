@@ -4,6 +4,7 @@ namespace SimpleTracker\Project;
 
 use SimpleTracker\Duration\Duration;
 use SimpleTracker\Task\Task;
+use SimpleTracker\Task\TaskEstimateTooLong;
 
 class Sprint implements \Countable
 {
@@ -26,6 +27,8 @@ class Sprint implements \Countable
     {
         if ($this->getEstimate()->toHours() + $task->getEstimate()->toHours() <= $this->duration->toHours()) {
             $this->tasks[] = $task;
+        } else {
+            throw new TaskEstimateTooLong();
         }
     }
 
