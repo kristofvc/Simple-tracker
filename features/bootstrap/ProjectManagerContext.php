@@ -25,6 +25,8 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
      */
     private $tasks = [];
 
+    private $exception;
+
     /**
      * @Given a sprint named :name with a duration of :duration hour(s)
      */
@@ -49,7 +51,11 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
      */
     public function iChooseToAssignTheTaskToTheGivenSprint($name)
     {
-        $this->sprint->assignTask($this->tasks[$name]);
+        try {
+            $this->sprint->assignTask($this->tasks[$name]);
+        } catch (TaskEstimateTooLong $e) {
+            $this->exception = $e;
+        }
     }
 
     /**
@@ -73,6 +79,6 @@ class ProjectManagerContext implements Context, SnippetAcceptingContext
      */
     public function iShouldBeNotifiedThatTheTaskEstimateIsTooLongForTheGivenSprint()
     {
-        throw new PendingException();
+        Assert::assertInstanceOf(TaskEstimateTooLong::class, $this->exception);
     }
 }
