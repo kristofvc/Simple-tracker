@@ -172,4 +172,33 @@ Run `composer install`
     $response = $kernel->handle($request);
     $response->send();
     $kernel->terminate($request, $response);
-``` 
+```
+
+## Add an online simple project manager context
+
+- Replace the contents of `behat.yml with the following:
+
+```json
+    default:
+        suites:
+            simpleProjectManager:
+                contexts: [ SimpleProjectManagerContext ]
+                filters:  { role: project manager, tags: simple }
+    
+            projectManager:
+                contexts: [ ProjectManagerContext ]
+                filters:  { role: project manager, tags: less-simple }
+    
+            onlineSimpleProjectManager:
+                contexts: [ OnlineSimpleProjectManagerContext ]
+                filters:  { role: project manager, tags: simple-critical }
+    
+        extensions:
+            Behat\Symfony2Extension: ~
+            Behat\MinkExtension:
+                default_session: 'symfony2'
+                sessions:
+                    symfony2: { symfony2: ~ }
+```
+
+- Initialize behat `bin/behat --init 
