@@ -1,3 +1,4 @@
+@less-simple
 Feature: Project manager assigns tasks to a sprint
   In order to get things done in a sprint
   As a project manager

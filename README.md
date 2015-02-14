@@ -202,3 +202,7 @@ Run `composer install`
 ```
 
 - Initialize behat `bin/behat --init 
+- Mark the scenario in `pm_edits_project.feature` as `simple-critical` 
+- Mark the feature for assigning a task in `pm_assigns_task_to_sprint.feature` as `less-simple`
+- Add snippets to the online simple project manager context `bin/behat features/pm_edits_project.feature --append-snippets --tags=simple-critical`
+ 
