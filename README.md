@@ -231,3 +231,4 @@ Run `composer install`
 - Add orm-files for you entities to `app/config/doctrine`
 - Add repositories
 - Implement controller and template
+- Implement the when and then in behat to test your scenario
