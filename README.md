@@ -206,3 +206,6 @@ Run `composer install`
 - Mark the feature for assigning a task in `pm_assigns_task_to_sprint.feature` as `less-simple`
 - Add snippets to the online simple project manager context `bin/behat features/pm_edits_project.feature --append-snippets --tags=simple-critical`
  
+## Leverage Symfony and Mink to implement your pages and functional tests
+
+- Implement the given and when steps in your scenario by using Mink

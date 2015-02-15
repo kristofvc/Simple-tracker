@@ -3,14 +3,17 @@
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
+use SimpleTracker\Project\Project;
+use Behat\MinkExtension\Context\RawMinkContext;
 
 /**
  * Defines application features from the specific context.
  */
-class OnlineSimpleProjectManagerContext implements Context, SnippetAcceptingContext
+class OnlineSimpleProjectManagerContext extends RawMinkContext implements Context, SnippetAcceptingContext
 {
+    /** @var Project */
+    private $project;
+
     /**
      * Initializes context.
      *
@@ -23,19 +26,25 @@ class OnlineSimpleProjectManagerContext implements Context, SnippetAcceptingCont
     }
 
     /**
-     * @Given there is a project named :arg1
+     * @Given there is a project named :name
      */
-    public function thereIsAProjectNamed($arg1)
+    public function thereIsAProjectNamed($name)
     {
-        throw new PendingException();
+        $this->project = Project::named($name);
     }
 
     /**
-     * @When I change the name of that project to :arg1
+     * @When I change the name of that project to :name
      */
-    public function iChangeTheNameOfThatProjectTo($arg1)
+    public function iChangeTheNameOfThatProjectTo($name)
     {
-        throw new PendingException();
+        $this->getSession()->visit('/project/' . urlencode($this->project->getSlug()));
+        $this->assertSession()->elementExists('css', ".project-form");
+
+        $form = $this->getSession()->getPage()->find('css', ".project-form");
+        $form->fillField('form_name', $name);
+
+        $form->submit();
     }
 
     /**
