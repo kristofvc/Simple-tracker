@@ -33,4 +33,9 @@ class ProjectSpec extends ObjectBehavior
         $this->setName('More awesome project');
         $this->getName()->shouldBe('More awesome project');
     }
+
+    function it_can_get_the_slug()
+    {
+        $this->getSlug()->shouldBe('awesome-project');
+    }
 }

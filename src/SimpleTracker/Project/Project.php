@@ -23,4 +23,9 @@ class Project
     {
         return $this->name;
     }
+
+    public function getSlug()
+    {
+        return strtolower(str_replace(' ', '-', $this->name));
+    }
 }
