@@ -10,6 +10,10 @@ class DefaultController extends Controller
     public function indexAction($slug)
     {
         $aProject = $this->get('simple_tracker.repository.project')->findOneBy(['slug' => $slug]);
+        if (!$aProject) {
+            throw $this->createNotFoundException();
+        }
+
         $formBuilder = $this->createFormBuilder($aProject, [ 'attr' => [ 'class' => 'project-form' ]]);
         $formBuilder->add('name', 'text', [ 'attr' => [ 'class' => 'name' ]]);
         $formBuilder->add('submit', 'submit');
