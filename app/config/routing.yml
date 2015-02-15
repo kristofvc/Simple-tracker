@@ -1,3 +1,3 @@
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation
+simple_tracker_app:
+    resource: "@SimpleTrackerAppBundle/Resources/config/routing.xml"
+    prefix:   /

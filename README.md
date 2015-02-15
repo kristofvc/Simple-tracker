@@ -209,3 +209,7 @@ Run `composer install`
 ## Leverage Symfony and Mink to implement your pages and functional tests
 
 - Implement the given and when steps in your scenario by using Mink
+- Implement needed methods via phpspec
+- Generate a symfony bundle `app/console generate:bundle --bundle-name=SimpleTrackerAppBundle --namespace=SimpleTracker/AppBundle`
+- Choose `xml` as the configuration format
+- Cleanup controller and tests
