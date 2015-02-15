@@ -1,12 +1,12 @@
 <?php
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use SimpleTracker\Project\Project;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\SchemaTool;
+use PHPUnit_Framework_Assert as Assert;
 
 /**
  * Defines application features from the specific context.
@@ -73,10 +73,12 @@ class OnlineSimpleProjectManagerContext extends RawMinkContext implements Contex
     }
 
     /**
-     * @Then the name of that project should be :arg1
+     * @Then the name of that project should be :name
      */
-    public function theNameOfThatProjectShouldBe($arg1)
+    public function theNameOfThatProjectShouldBe($name)
     {
-        throw new PendingException();
+        $this->assertSession()->elementExists('css', ".project-form");
+        $form = $this->getSession()->getPage()->find('css', ".project-form");
+        Assert::assertEquals($name, $form->findById('form_name')->getValue());
     }
 }
