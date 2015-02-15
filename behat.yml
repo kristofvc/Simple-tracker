@@ -9,7 +9,9 @@ default:
             filters:  { role: project manager, tags: less-simple }
 
         onlineSimpleProjectManager:
-            contexts: [ OnlineSimpleProjectManagerContext ]
+            contexts:
+                - OnlineSimpleProjectManagerContext:
+                    entityManager: @doctrine.orm.entity_manager
             filters:  { role: project manager, tags: simple-critical }
 
     extensions:

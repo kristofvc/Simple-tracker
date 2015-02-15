@@ -5,12 +5,19 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use SimpleTracker\Project\Project;
 use Behat\MinkExtension\Context\RawMinkContext;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Tools\SchemaTool;
 
 /**
  * Defines application features from the specific context.
  */
 class OnlineSimpleProjectManagerContext extends RawMinkContext implements Context, SnippetAcceptingContext
 {
+    /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+
     /** @var Project */
     private $project;
 
@@ -20,9 +27,25 @@ class OnlineSimpleProjectManagerContext extends RawMinkContext implements Contex
      * Every scenario gets its own context instance.
      * You can also pass arbitrary arguments to the
      * context constructor through behat.yml.
+     *
+     * @param EntityManagerInterface $entityManager
      */
-    public function __construct()
+    public function __construct(EntityManagerInterface $entityManager)
     {
+        $this->entityManager = $entityManager;
+    }
+
+    /**
+     * @BeforeScenario
+     */
+    public function cleanDatabase()
+    {
+        $metadata = $this->entityManager->getMetadataFactory()->getAllMetadata();
+        if (!empty($metadata)) {
+            $tool = new SchemaTool($this->entityManager);
+            $tool->dropSchema($metadata);
+            $tool->createSchema($metadata);
+        }
     }
 
     /**
@@ -31,6 +54,8 @@ class OnlineSimpleProjectManagerContext extends RawMinkContext implements Contex
     public function thereIsAProjectNamed($name)
     {
         $this->project = Project::named($name);
+        $this->entityManager->persist($this->project);
+        $this->entityManager->flush();
     }
 
     /**
