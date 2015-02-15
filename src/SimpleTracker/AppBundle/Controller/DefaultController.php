@@ -9,7 +9,7 @@ class DefaultController extends Controller
 {
     public function indexAction($slug)
     {
-        $aProject = Project::named('Awesome project');
+        $aProject = $this->get('simple_tracker.repository.project')->findOneBy(['slug' => $slug]);
         $formBuilder = $this->createFormBuilder($aProject, [ 'attr' => [ 'class' => 'project-form' ]]);
         $formBuilder->add('name', 'text', [ 'attr' => [ 'class' => 'name' ]]);
         $formBuilder->add('submit', 'submit');

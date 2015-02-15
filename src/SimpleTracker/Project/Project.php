@@ -5,11 +5,13 @@ namespace SimpleTracker\Project;
 class Project
 {
     private $name;
+    private $slug;
 
     public static function named($name)
     {
         $project = new Project();
         $project->name = $name;
+        $project->slug = $project->getSlug();
 
         return $project;
     }

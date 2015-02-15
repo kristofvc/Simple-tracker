@@ -62,7 +62,13 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+        auto_mapping: false
+        mappings:
+            simple_tracker:
+                is_bundle: false
+                type:      xml
+                dir:       %kernel.root_dir%/config/doctrine
+                prefix:    SimpleTracker
 
 # Swiftmailer Configuration
 swiftmailer:

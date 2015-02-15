@@ -213,3 +213,21 @@ Run `composer install`
 - Generate a symfony bundle `app/console generate:bundle --bundle-name=SimpleTrackerAppBundle --namespace=SimpleTracker/AppBundle`
 - Choose `xml` as the configuration format
 - Cleanup controller and tests
+
+- Add your mapping doctrine config:
+
+```json
+    orm:
+            auto_generate_proxy_classes: "%kernel.debug%"
+            auto_mapping: false
+            mappings:
+                simple_tracker:
+                    is_bundle: false
+                    type:      xml
+                    dir:       %kernel.root_dir%/config/doctrine
+                    prefix:    SimpleTracker
+``` 
+
+- Add orm-files for you entities to `app/config/doctrine`
+- Add repositories
+- Implement controller and template
